@@ -13,22 +13,41 @@
 
 		{% block javascripts %}
 			{{ encore_entry_script_tags('app') }}
-			{% block importmap %}
-				{{ importmap('app') }}
-			{% endblock %}
+		{% endblock %}
+
+		{% block importmap %}
+			{{ importmap('app') }}
 		{% endblock %}
 	</head>
 	<body>
-		<nav class="bg-[#d4683e] py-2">
+		<nav class="bg-[#d4683e] py-4">
 			<div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 flex items-center justify-between">
-				<div class="flex space-x-4">
-					<a href="{{ path('home') }}" class=" text-white font-bold  px-3 py-2 text-sm  {% if app.request.attributes.get('_route') == 'home' %} {{ 'bg-[#f6a609]' }} {% endif %}" aria-current="page">Accueil</a>
-					<a href="{{ path('vehicles.index') }}" class=" text-white font-bold px-3 py-2 text-sm  {% if app.request.attributes.get('_route') == 'vehicles.index' %} {{ 'bg-[#f6a609]' }} {% endif %}" aria-current="page">Véhicules</a>
+				<div class="flex items-center gap-6">
+					<a href="{{ path('home') }}" class="text-white font-semibold hover:bg-[#f6a609] px-4 py-2 text-sm border border-[#f6a609]  {% if app.request.attributes.get('_route') == 'home' %} {{ ' bg-[#f6a609]' }} {% endif %}" aria-current="page">Accueil</a>
+					<a href="{{ path('vehicles.index') }}" class="text-white border border-[#f6a609]  font-semibold hover:bg-[#f6a609] px-4 py-2 text-sm  {% if app.request.attributes.get('_route') == 'vehicles.index' %} {{ ' bg-[#f6a609]' }} {% endif %}" aria-current="page">Véhicules</a>
 				</div>
-				<h1 class="font-bold text-xl text-white">YanWikiTest</h1>
+				<h1 class="font-bold text-xl text-white mr-4">WikiTestYan</h1>
 			</div>
 		</nav>
 		{% include 'partials/flash.html.twig' %}
 		{% block body %}{% endblock %}
+
+
+		<footer class="  shadow m-4 bg-[#d4683e]">
+			<div class="w-full mx-auto max-w-7xl py-4 px-10 md:flex md:items-center md:justify-between">
+				<span class="text-sm text-white sm:text-center ">2024
+					<a href="https://www.yanlafitte.com/" target="_blank" rel="noopener noreferrer" class="hover:underline">Built by Yan Lafitte.</a>
+				</span>
+				<ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-white sm:mt-0">
+					<li>
+						<a href="https://github.com/YanLAFITTE/Wiki-Test-Yan" target="_blank" rel="noopener noreferrer" class="hover:underline me-4 md:me-6">GitHub</a>
+					</li>
+					<li>
+						<a href="mailto:welcome.yanlafitte@gmail.com" class="hover:underline">Contact</a>
+					</li>
+				</ul>
+			</div>
+		</footer>
+
 	</body>
 </html>

@@ -6,25 +6,25 @@
 {% block body %}
 
 
-	<div class="text-5xl mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+	<div class="mx-auto max-w-7xl mt-20 mb-40 px-2 sm:px-6 lg:px-8 ">
 
-
-		<div class="mb-4">This friendly message is coming from: /vehicles.show</div>
-
-		<div>{{vehicle.getBrand()}}
+		<p class="p-4 text-2xl max-w-xl mx-auto bg-gray-100 font-semibold  text-center mb-20">{{vehicle.getBrand()| capitalize}}
 			-
-			{{vehicle.getModel()}}</div>
+			{{vehicle.getModel()| capitalize}}</p>
 
-		<h2 class=" mt-4">Availabilities :</h2>
-		<ul>
+		<div class="max-w-xl w-full mx-auto text-xl ">
+			<h2 class=" mt-4 font-semibold">Disponibilités :</h2>
 			{% for availability in availabilities %}
-				<li>Start Date:
-					{{ availability.startDate|date('Y-m-d') }}</li>
-				<li>End Date:
-					{{ availability.endDate|date('Y-m-d') }}</li>
-				<li>Price per Day:
-					{{ availability.pricePerDay }}</li>
+				<ul class="flex flex-col gap-4 mt-8 bg-white  shadow-md p-6 ">
+					<li>Date de début:
+						{{ availability.startDate|date('d/m/Y') }}</li>
+					<li>Date de fin:
+						{{ availability.endDate|date('d/m/Y') }}</li>
+					<li>Prix par jour:
+						{{ availability.pricePerDay }}
+						€</li>
+				</ul>
 			{% endfor %}
-		</ul>
+		</div>
 	</div>
 {% endblock %}

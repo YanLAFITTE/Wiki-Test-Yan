@@ -1,11 +1,85 @@
-{% extends 'base.html.twig' %}
+{# {% extends 'base.html.twig' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Home Controller
+{% endblock %}
 
 {% block body %}
 
-<div>
-   
-    <h1 class="font-bold text-3xl">Hello</h1>
-</div>
+
+	<div class="text-5xl mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+
+
+	
+			{{ form_start(searchForm, {'attr': {'class': 'max-w-3xl mx-auto mt-4'}}) }}
+			{{ form_start(searchForm)}}
+			{{ form_row(searchForm.startDate) }}
+			{{ form_row(searchForm.endDate) }}
+			{{ form_row(searchForm.maxPrice, { 'label': 'Max Price:' }) }}
+	
+			{{ form_end(searchForm) }}
+
+
+		<div>
+			{% for vehicle in vehicles %}
+				<li>
+					<a href="{{ path('vehicles.show', { id: vehicle.getId(), slug: vehicle.getSlug() }) }}" class="hover:bg-sky-700 underline">
+						{{ vehicle.getBrand() }}
+						-
+						{{ vehicle.getModel() }}
+					</a>
+					<ul>
+						{% for availability in vehicle.availabilities %}
+							<li>Price per day: €{{ availability.getPricePerDay() }}</li>
+						{% endfor %}
+					</ul>
+				</li>
+			{% endfor %}
+		</div>
+
+	</div>
+{% endblock %} #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Home Controller
+{% endblock %}
+
+{% block body %}
+
+
+	<div class=" font-semibold mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 mb-20">
+
+		<p class="p-4 text-2xl max-w-xl mx-auto bg-gray-100  text-center mt-20 mb-10">
+			Rechercher un vehicule
+		</p>
+
+		{{ form_start(searchForm, {'attr': {'class': 'max-w-xl mx-auto '}}) }}
+		<div class="flex gap-6">
+			{{ form_row(searchForm.startDate,  {'attr': {'class': 'mb-6 w-full '}}) }}
+			{{ form_row(searchForm.endDate, {'attr': {'class': 'mb-6 w-full '}}) }}
+		</div>
+		{{ form_row(searchForm.maxPrice, { 'attr': {'class': ' flex gap-4  mx-auto] '} }) }}
+		{{ form_widget(searchForm.save, {'label': 'Rechercher', 'attr': {'class': 'mx-auto block text-black border border-[#f6a609] hover:bg-[#f6a609] text-md hover:text-white font-semibold mb-6 mt-10 text-sm px-4 py-3 focus:outline-none  '}}) }}
+		{{ form_end(searchForm) }}
+		<div class="max-w-5xl mx-auto mt-20 ">
+			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-28">
+				{% for vehicle in vehicles %}
+					<a href="{{ path('vehicles.show', { id: vehicle.getId(), slug: vehicle.getSlug() }) }}" class="  ">
+						<div class="bg-white  shadow-md p-6 hover:bg-gray-100 hover:shadow-gray-100">
+							<div class="block mb-4">
+								{{ vehicle.getBrand()| capitalize  }}
+								-
+								{{ vehicle.getModel()| capitalize  }}
+							</div>
+							<ul>
+								{% for availability in vehicle.availabilities %}
+									<li>{{ availability.getPricePerDay() }}€ / jour</li>
+								{% endfor %}
+							</ul>
+						</div>
+					</a>
+				{% endfor %}
+			</div>
+		</div>
+
+	</div>
 {% endblock %}
