@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EditController!
+{% endblock %}
+
+
+{% block body %}
+
+	<div class="mx-auto max-w-7xl">
+
+		<p class="p-4">
+
+			This friendly message is coming from: /Create
+		</p>
+
+		<div class="w-full p-4 ">
+			{{ form_start(form, {'attr': {'class': 'max-w-3xl mx-auto '}}) }}
+
+			{{ form_row(form.brand, {'label': 'Marque:',  'attr': {'class': 'mb-4 w-full '}}) }}
+			{{ form_row(form.model, {'label': 'Modèle:', 'attr': {'class': 'mb-4 w-full '}}) }}
+
+			{% for availabilityForm in form.availabilities %}
+				<div class="availability-item">
+					{{ form_row(availabilityForm.start_date,  {'label': 'Date de départ:',  'attr': {'class': 'mb-4 w-full '}}) }}
+					{{ form_row(availabilityForm.end_date, {'label': 'Date de fin:',  'attr': {'class': 'mb-4 w-full '}}) }}
+					{{ form_row(availabilityForm.price_per_day, {'label': 'Prix par jour:',  'attr': {'class': 'mb-4 w-full '}}) }}
+					<div class="flex items-center gap-6 mb-4">
+						{{ form_label(availabilityForm.status, 'Disponibilité:', {'attr': {'class': ''}}) }}
+						{{ form_widget(availabilityForm.status, {'attr': {'class': ''}}) }}
+					</div>
+				</div>
+			{% endfor %}
+
+			{{ form_end(form) }}
+		</div>
+
+
+	</div>
+
+
+{% endblock %}

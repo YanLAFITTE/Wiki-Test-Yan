@@ -19,6 +19,16 @@
 		{% endblock %}
 	</head>
 	<body>
+		<nav class="bg-[#d4683e] py-2">
+			<div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 flex items-center justify-between">
+				<div class="flex space-x-4">
+					<a href="{{ path('home') }}" class=" text-white font-bold  px-3 py-2 text-sm  {% if app.request.attributes.get('_route') == 'home' %} {{ 'bg-[#f6a609]' }} {% endif %}" aria-current="page">Accueil</a>
+					<a href="{{ path('vehicles.index') }}" class=" text-white font-bold px-3 py-2 text-sm  {% if app.request.attributes.get('_route') == 'vehicles.index' %} {{ 'bg-[#f6a609]' }} {% endif %}" aria-current="page">Véhicules</a>
+				</div>
+				<h1 class="font-bold text-xl text-white">YanWikiTest</h1>
+			</div>
+		</nav>
+		{% include 'partials/flash.html.twig' %}
 		{% block body %}{% endblock %}
 	</body>
 </html>

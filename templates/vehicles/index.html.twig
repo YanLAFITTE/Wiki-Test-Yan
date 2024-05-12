@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello Vehicles Controller!
+{% endblock %}
+
+{% block body %}
+
+
+	<div class="mx-auto max-w-7xl p-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+
+		<p class=" border-b pb-2 border-black">
+			This friendly message is coming from: /Vehicles
+		</p>
+		<div>
+			<a class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium text-sm px-5 py-2.5  dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" href={{path('vehicles.create' )}}>
+				<span>Ajouter un vehicule</span>
+			</a>
+		</div>
+
+		<table class="w-full">
+			<thead>
+				<tr class=" flex justify-between mt-8 mb-4">
+					<th>
+						Titre
+					</th>
+					<th>
+						Actions
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for vehicle in vehicles %}
+					<tr class=" text-2xl border-b border-black  flex items-center justify-between pb-2 mb-4">
+						<td>
+							<a class=" hover:opacity-80 underline cursor-pointer" href={{path('vehicles.show',{id: vehicle.getId(),slug: vehicle.getSlug()} )}}>
+								<span>{{vehicle.getBrand()}}</span>
+							</a>
+						</td>
+						<td class="flex gap-4">
+							<a class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium  text-sm px-5 py-2.5  dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" href={{path('vehicles.edit',{id: vehicle.getId()} )}}>
+								<span>Editer</span>
+							</a>
+							<form action={{ path('vehicles.delete', {id: vehicle.getId()} )}} method="post">
+
+								<input type="hidden" name="_method" value="DELETE">
+								<button type="submit" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium text-sm px-5 py-2.5  dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800">
+									<span>Suprimer</span>
+								</button>
+							</form>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}
