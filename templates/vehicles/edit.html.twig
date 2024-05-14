@@ -6,35 +6,14 @@
 
 {% block body %}
 
-	<div class="mx-auto max-w-7xl font-semibold mb-20">
+	<div class="mx-auto w-full max-w-7xl  font-semibold mb-10 ">
 
 		<p class="p-4  mt-20  text-2xl max-w-xl mx-auto bg-gray-100 text-center mb-10">
 
 			Modifier un vehicule
 		</p>
 
-		<div class="w-full p-4 text-md mb-10">
-			{{ form_start(form, {'attr': {'class': 'max-w-xl mx-auto '}}) }}
-
-			{{ form_row(form.brand, {'label': 'Marque:',  'attr': {'class': 'mb-6 w-full'}}) }}
-			{{ form_row(form.model, {'label': 'Modèle:', 'attr': {'class': 'mb-6 w-full'}}) }}
-
-			{% for availabilityForm in form.availabilities %}
-				<div class="availability-item ">
-					{{ form_row(availabilityForm.start_date,  {'label': 'Date de départ:',  'attr': {'class': 'mb-6 w-full '}}) }}
-					{{ form_row(availabilityForm.end_date, {'label': 'Date de fin:',  'attr': {'class': 'mb-6 w-full '}}) }}
-					{{ form_row(availabilityForm.price_per_day, {'label': 'Prix par jour: ',  'attr': {'class': 'mb-6 w-full '}}) }}
-					<div class="flex items-center gap-6 mb-6">
-						{{ form_label(availabilityForm.status, 'Disponibilité:', {'attr': {'class': ''}}) }}
-						{{ form_widget(availabilityForm.status, {'attr': {'class': ''}}) }}
-					</div>
-				</div>
-			{% endfor %}
-
-			{{ form_widget(form.save, {'label': 'Modifier', 'attr': {'class': ' mx-auto block  text-black border border-[#d4683e] hover:bg-[#d4683e] hover:text-white mb-6 mt-10 text-sm px-4 py-3 focus:outline-none '}}) }}
-			{{ form_end(form) }}
-		</div>
-
+		{% include 'partials/form.html.twig' %}
 
 	</div>
 

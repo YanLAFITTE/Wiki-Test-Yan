@@ -18,7 +18,6 @@ class HomeController extends AbstractController
         $searchForm = $this->createForm(SearchType::class);
         $searchForm->handleRequest($request);
 
-
         $vehicles = [];
         $maxPrice = null;
 
@@ -30,18 +29,47 @@ class HomeController extends AbstractController
 
             $vehicles = $repository->findAvailableVehicles($startDate, $endDate, $maxPrice);
 
-            // if (empty($vehicles)) {
+            //  if (empty($vehicles)) {
+
             //     $expandedStartDate = clone $startDate;
             //     $expandedEndDate = clone $endDate;
             //     $expandedStartDate->modify('+1 day');
-            //     // $expandedEndDate->modify('+1 day');
+            //     $expandedEndDate->modify('-1 day');
+            // replace time() with the time stamp you want to add one day to
+            // $startDate = time();
+            // date('Y-m-d H:i:s', strtotime('+1 day', $startDate));
 
             //     $vehicles = $repository->findAvailableVehicles($expandedStartDate, $expandedEndDate, $maxPrice);
+            //     dd($expandedStartDate);
             // }
+
+            $availableVehicles = [];
+            foreach ($vehicles as $vehicle) {
+                $availabilities = $vehicle->getAvailabilities();
+                foreach ($availabilities as $availability) {
+                    if ($availability->isStatus() == 1) {
+                        $availableVehicles[] = $vehicle;
+                        break;
+                    }
+                }
+            }
+
+            $vehicles = $availableVehicles;
+        } else {
+
+            $vehicles = $repository->findAll();
+            $availableVehicles = [];
+            foreach ($vehicles as $vehicle) {
+                $availabilities = $vehicle->getAvailabilities();
+                foreach ($availabilities as $availability) {
+                    if ($availability->isStatus() == 1) {
+                        $availableVehicles[] = $vehicle;
+                        break;
+                    }
+                }
+            }
+            $vehicles = $availableVehicles;
         }
-        // else {
-        //     $vehicles = $repository->findAll();
-        // }
 
         return $this->render('home/index.html.twig', [
             'vehicles' => $vehicles,

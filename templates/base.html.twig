@@ -19,7 +19,7 @@
 			{{ importmap('app') }}
 		{% endblock %}
 	</head>
-	<body>
+	<body class=" min-h-[100vh] flex flex-col ">
 		<nav class="bg-[#d4683e] py-4">
 			<div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 flex items-center justify-between">
 				<div class="flex items-center gap-6">
@@ -33,7 +33,7 @@
 		{% block body %}{% endblock %}
 
 
-		<footer class="  shadow m-4 bg-[#d4683e]">
+		<footer class="  shadow m-4 bg-[#d4683e] mt-auto">
 			<div class="w-full mx-auto max-w-7xl py-4 px-10 md:flex md:items-center md:justify-between">
 				<span class="text-sm text-white sm:text-center ">2024
 					<a href="https://www.yanlafitte.com/" target="_blank" rel="noopener noreferrer" class="hover:underline">Built by Yan Lafitte.</a>

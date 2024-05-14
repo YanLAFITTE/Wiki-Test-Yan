@@ -1,0 +1,20 @@
+<div class="w-full p-4 text-md ">
+	{{ form_start(form, {'attr': {'class': 'max-w-xl mx-auto '}}) }}
+
+	{{ form_row(form.brand, {'label': 'Marque:',  'attr': {'class': 'mb-6 mt-2 w-full focus:ring-[#d4683e] focus:border-[#d4683e] focus:ring-ring focus:ring-offset-0'}}) }}
+	{{ form_row(form.model, {'label': 'Modèle:', 'attr': {'class': 'mb-6 mt-2 w-full focus:ring-[#d4683e] focus:border-[#d4683e] focus:ring-ring focus:ring-offset-0'}}) }}
+
+	{% for availabilityForm in form.availabilities %}
+		<div class="availability-item">
+			{{ form_row(availabilityForm.start_date,  {'label': 'Date de départ:',  'attr': {'class': 'mb-6 mt-2 w-full focus:ring-[#d4683e] focus:border-[#d4683e] focus:ring-ring focus:ring-offset-0'}}) }}
+			{{ form_row(availabilityForm.end_date, {'label': 'Date de fin:',  'attr': {'class': 'mb-6 mt-2 w-full focus:ring-[#d4683e] focus:border-[#d4683e] focus:ring-ring focus:ring-offset-0'}}) }}
+			{{ form_row(availabilityForm.price_per_day, {'label': 'Prix par jour: ',  'attr': {'class': 'mb-6 mt-2 w-full focus:ring-[#d4683e] focus:border-[#d4683e] focus:ring-ring focus:ring-offset-0'}}) }}
+			<div class="flex items-center gap-6 mb-4">
+				{{ form_label(availabilityForm.status, 'Disponible:', {'label_attr': {'class': ''}}) }}
+				{{ form_widget(availabilityForm.status, {'attr': {'class': 'cursor-pointer focus:ring-0 focus:ring-offset-0 text-[#d4683e]'}}) }}
+			</div>
+		</div>
+	{% endfor %}
+	{{ form_widget(form.save, {'label': 'Envoyer', 'attr': {'class': ' mx-auto block  text-black border border-[#f6a609] hover:bg-[#f6a609] hover:text-white mb-6 mt-10 text-sm px-4 py-3 focus:outline-none '}}) }}
+	{{ form_end(form) }}
+</div>

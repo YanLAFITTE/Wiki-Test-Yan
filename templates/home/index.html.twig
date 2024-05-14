@@ -54,14 +54,14 @@
 
 		{{ form_start(searchForm, {'attr': {'class': 'max-w-xl mx-auto '}}) }}
 		<div class="flex gap-6">
-			{{ form_row(searchForm.startDate,  {'attr': {'class': 'mb-6 w-full '}}) }}
-			{{ form_row(searchForm.endDate, {'attr': {'class': 'mb-6 w-full '}}) }}
+			{{ form_row(searchForm.startDate,  {'attr': {'class': 'mb-6 mt-2 w-full focus:ring-[#d4683e] focus:border-[#d4683e] focus:ring-ring focus:ring-offset-0'}}) }}
+			{{ form_row(searchForm.endDate, {'attr': {'class': 'mb-6 mt-2 w-full focus:ring-[#d4683e] focus:border-[#d4683e] focus:ring-ring focus:ring-offset-0'}}) }}
 		</div>
-		{{ form_row(searchForm.maxPrice, { 'attr': {'class': ' flex gap-4  mx-auto] '} }) }}
+		{{ form_row(searchForm.maxPrice, { 'attr': {'class': ' flex gap-4 mt-2  focus:ring-[#d4683e] focus:border-[#d4683e] focus:ring-ring focus:ring-offset-0'} }) }}
 		{{ form_widget(searchForm.save, {'label': 'Rechercher', 'attr': {'class': 'mx-auto block text-black border border-[#f6a609] hover:bg-[#f6a609] text-md hover:text-white font-semibold mb-6 mt-10 text-sm px-4 py-3 focus:outline-none  '}}) }}
 		{{ form_end(searchForm) }}
 		<div class="max-w-5xl mx-auto mt-20 ">
-			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-28">
+			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
 				{% for vehicle in vehicles %}
 					<a href="{{ path('vehicles.show', { id: vehicle.getId(), slug: vehicle.getSlug() }) }}" class="  ">
 						<div class="bg-white  shadow-md p-6 hover:bg-gray-100 hover:shadow-gray-100">

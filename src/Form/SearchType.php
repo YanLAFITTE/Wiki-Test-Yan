@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\PositiveOrZero;
 
 class SearchType extends AbstractType
 {
@@ -21,12 +22,13 @@ class SearchType extends AbstractType
             ])
             ->add('endDate', DateType::class, [
                 'widget' => 'single_text',
-                'label' => 'Date d\'arrivée',
+                'label' => 'Date de retour',
                 'required' => true,
             ])
             ->add('maxPrice', NumberType::class, [
                 'label' => 'Prix maximum (optionnel)',
                 'required' => false,
+                'constraints' => new PositiveOrZero(),
             ])
             ->add('save', SubmitType::class);
     }

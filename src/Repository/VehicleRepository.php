@@ -31,8 +31,10 @@ class VehicleRepository extends ServiceEntityRepository
             ->leftJoin('vehicle.availabilities', 'availability')
             ->andWhere('availability.start_date <= :end_date')
             ->andWhere('availability.end_date >= :start_date')
+            // ->andWhere('availability.isStatus = :status')
             ->setParameter('start_date', $start_date)
             ->setParameter('end_date', $end_date);
+            // ->setParameter('status', $status);
 
         if ($maxPrice !== null) {
             $queryBuilder

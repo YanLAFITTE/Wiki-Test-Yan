@@ -30,6 +30,7 @@ class VehiclesController extends AbstractController
     public function show(Request $request, string $slug, int $id, VehicleRepository $repository): Response
     {
         $vehicle = $repository->find($id);
+        
         if (!$vehicle) {
             throw $this->createNotFoundException('Vehicle not found');
         }
@@ -47,6 +48,10 @@ class VehiclesController extends AbstractController
     #[Route('/vehicles/{id}/edit', name: 'vehicles.edit')]
     public function edit(Vehicle $vehicle, Request $request, EntityManagerInterface $em)
     {
+        if (!$vehicle) {
+            throw $this->createNotFoundException('Vehicle not found');
+        }
+
         $form = $this->createForm(VehicleType::class, $vehicle);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -90,6 +95,9 @@ class VehiclesController extends AbstractController
     #[Route('/vehicles/{id}/delete', name: 'vehicles.delete', methods: ['DELETE'])]
     public function remove(Vehicle $vehicle, EntityManagerInterface $em)
     {
+        if (!$vehicle) {
+            throw $this->createNotFoundException('Vehicle not found');
+        }
         $em->remove($vehicle);
         $em->flush();
         $this->addFlash('success', 'Le vehicule a bien été supprimer.');

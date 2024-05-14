@@ -6,16 +6,21 @@
 {% block body %}
 
 
-	<div class="mx-auto max-w-7xl mt-20 mb-40 px-2 sm:px-6 lg:px-8 ">
+	<div class="mx-auto w-full max-w-7xl mt-20 mb-40 px-2 sm:px-6 lg:px-8 ">
 
 		<p class="p-4 text-2xl max-w-xl mx-auto bg-gray-100 font-semibold  text-center mb-20">{{vehicle.getBrand()| capitalize}}
 			-
 			{{vehicle.getModel()| capitalize}}</p>
 
 		<div class="max-w-xl w-full mx-auto text-xl ">
-			<h2 class=" mt-4 font-semibold">Disponibilités :</h2>
+			<h2 class=" mt-4 text-center font-semibold">Disponibilités</h2>
 			{% for availability in availabilities %}
 				<ul class="flex flex-col gap-4 mt-8 bg-white  shadow-md p-6 ">
+					<li>Disponible:
+						{% if availability.isStatus == 1 %}Oui{% else %}Non
+						{% endif %}
+					</li>
+
 					<li>Date de début:
 						{{ availability.startDate|date('d/m/Y') }}</li>
 					<li>Date de fin:
