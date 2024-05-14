@@ -19,16 +19,22 @@ class SearchType extends AbstractType
                 'widget' => 'single_text',
                 'label' => 'Date de départ',
                 'required' => true,
+                'html5' => true,
+                'attr' => ['min' => date('d-m-Y')],
             ])
             ->add('endDate', DateType::class, [
                 'widget' => 'single_text',
                 'label' => 'Date de retour',
                 'required' => true,
+                'html5' => true,
+                'attr' => ['min' => date('d-m-Y')],
             ])
             ->add('maxPrice', NumberType::class, [
                 'label' => 'Prix maximum (optionnel)',
                 'required' => false,
-                'constraints' => new PositiveOrZero(),
+                'constraints' => new PositiveOrZero([
+                    'message' => 'Entrer un nombre positif ou zéro.'
+                ]),
             ])
             ->add('save', SubmitType::class);
     }

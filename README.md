@@ -35,7 +35,7 @@ This Symfony-based website allows users to manage vehicles and their availabilit
     php bin/console doctrine:fixtures:load
     ```
 
-6. Run the Symfony development server:
+6. Run the PHP development server:
 
     ```bash
     php -S localhost:8000 -t public 

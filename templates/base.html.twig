@@ -3,10 +3,12 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>
-			{% block title %}Welcome!
+			{% block title %}Welccome!
 			{% endblock %}
 		</title>
-		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+
+
+		<link rel="icon" type="image/svg+xml" href="{{ asset('svg/favicon.svg') }}">
 		{% block stylesheets %}
 			{{ encore_entry_link_tags('app') }}
 		{% endblock %}
@@ -19,26 +21,24 @@
 			{{ importmap('app') }}
 		{% endblock %}
 	</head>
-	<body class=" min-h-[100vh] flex flex-col ">
-		<nav class="bg-[#d4683e] py-4">
+	<body class="min-h-screen flex flex-col ">
+		<nav class="bg-primary-color py-4">
 			<div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 flex items-center justify-between">
 				<div class="flex items-center gap-6">
-					<a href="{{ path('home') }}" class="text-white font-semibold hover:bg-[#f6a609] px-4 py-2 text-sm border border-[#f6a609]  {% if app.request.attributes.get('_route') == 'home' %} {{ ' bg-[#f6a609]' }} {% endif %}" aria-current="page">Accueil</a>
-					<a href="{{ path('vehicles.index') }}" class="text-white border border-[#f6a609]  font-semibold hover:bg-[#f6a609] px-4 py-2 text-sm  {% if app.request.attributes.get('_route') == 'vehicles.index' %} {{ ' bg-[#f6a609]' }} {% endif %}" aria-current="page">Véhicules</a>
+					<a href="{{ path('home') }}" class="text-tertiary-color font-semibold hover:bg-secondary-color px-4 py-2 text-sm border border-secondary-color  {% if app.request.attributes.get('_route') == 'home' %} {{ ' bg-secondary-color' }} {% endif %}" aria-current="page">Accueil</a>
+					<a href="{{ path('vehicles.index') }}" class="text-tertiary-color border border-secondary-color  font-semibold hover:bg-secondary-color px-4 py-2 text-sm  {% if app.request.attributes.get('_route') == 'vehicles.index' %} {{ ' bg-secondary-color' }} {% endif %}" aria-current="page">Véhicules</a>
 				</div>
-				<h1 class="font-bold text-xl text-white mr-4">WikiTestYan</h1>
+				<h1 class="font-bold text-xl text-tertiary-color mr-4">WikiTestYan</h1>
 			</div>
 		</nav>
 		{% include 'partials/flash.html.twig' %}
 		{% block body %}{% endblock %}
-
-
-		<footer class="  shadow m-4 bg-[#d4683e] mt-auto">
+		<footer class="  shadow m-4 bg-primary-color mt-auto">
 			<div class="w-full mx-auto max-w-7xl py-4 px-10 md:flex md:items-center md:justify-between">
-				<span class="text-sm text-white sm:text-center ">2024
+				<span class="text-sm text-tertiary-color sm:text-center ">2024
 					<a href="https://www.yanlafitte.com/" target="_blank" rel="noopener noreferrer" class="hover:underline">Built by Yan Lafitte.</a>
 				</span>
-				<ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-white sm:mt-0">
+				<ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-tertiary-color sm:mt-0">
 					<li>
 						<a href="https://github.com/YanLAFITTE/Wiki-Test-Yan" target="_blank" rel="noopener noreferrer" class="hover:underline me-4 md:me-6">GitHub</a>
 					</li>

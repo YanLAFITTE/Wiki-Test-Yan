@@ -22,6 +22,7 @@ class VehicleType extends AbstractType
             ->add('brand', TextType::class, [
                 'constraints' => new Sequentially(
                     [
+                        new NotBlank(['message' => 'Entrer une marque.']),
                         new Length(['min' => 4, 'max' => 50, 'minMessage' => 'Minimum 4 caractères.', 'maxMessage' => 'Maximum 50 caractères.']),
                         new Regex(['pattern' => '/^[A-Za-z0-9_\-\s]{3,15}$/', 'message' => 'Caractères alphanumériques uniquement.']),
                         new NotBlank(),
@@ -32,9 +33,9 @@ class VehicleType extends AbstractType
             ->add('model', TextType::class, [
                 'constraints' => new Sequentially(
                     [
+                        new NotBlank(['message' => 'Entrer un modèle.']),
                         new Length(['min' => 4, 'max' => 50, 'minMessage' => 'Minimum 4 caractères.', 'maxMessage' => 'Maximum 50 caractères.']),
                         new Regex(['pattern' => '/^[A-Za-z0-9_\-\s]{3,15}$/', 'message' => 'Caractères alphanumériques uniquement.']),
-                        new NotBlank(),
                     ]
                 ),
                 'required' => true,

@@ -1,19 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello Vehicles Controller!
+{% block title %}Véhicules
 {% endblock %}
 
 {% block body %}
-
-
 	<div class="mx-auto w-full max-w-7xl my-20  px-2 sm:px-6 lg:px-8 font-semibold">
 		<p class="p-4 text-2xl max-w-xl mx-auto bg-gray-100  text-center mb-20">Liste des vehicules</p>
 
 		<div class=" flex gap-10 items-center w-full max-w-5xl  mx-auto  pb-4">
 			<p class="">
-				Ajouter un vehicule:
+				Ajouter un véhicule:
 			</p>
-			<a class="text-black border border-[#f6a609] hover:bg-[#f6a609] hover:text-white font-medium text-sm px-5 py-2.5 focus:outline-none " href={{path('vehicles.create' )}}>
+			<a class="text-black border border-secondary-color hover:bg-secondary-color hover:text-tertiary-color font-medium text-sm px-5 py-2.5 focus:outline-none " href={{path('vehicles.create' )}}>
 				<span>Ajouter</span>
 			</a>
 		</div>
@@ -22,7 +20,7 @@
 			<thead>
 				<tr class=" flex justify-between mt-10 mb-4">
 					<th>
-						Modifier ou supprimer un vehicule:
+						Modifier ou supprimer un véhicule:
 					</th>
 				</tr>
 			</thead>
@@ -37,13 +35,13 @@
 							</a>
 						</td>
 						<td class="flex gap-4">
-							<a class="text-black border border-[#f6a609] hover:bg-[#f6a609] hover:text-white font-semibold  text-sm px-5 py-2.5 focus:outline-none" href={{path('vehicles.edit',{id: vehicle.getId()} )}}>
+							<a class="text-black border border-secondary-color hover:bg-secondary-color hover:text-tertiary-color font-semibold  text-sm px-5 py-2.5 focus:outline-none" href={{path('vehicles.edit',{id: vehicle.getId()} )}}>
 								<span>Modifier</span>
 							</a>
 							<form action={{ path('vehicles.delete', {id: vehicle.getId()} )}} method="post">
 
 								<input type="hidden" name="_method" value="DELETE">
-								<button type="submit" class="text-black border border-[#d4683e] hover:text-white hover:bg-[#d4683e] font-medium text-sm px-5 py-2.5 focus:outline-none">
+								<button type="submit" class="text-black border border-primary-color hover:text-tertiary-color hover:bg-primary-color font-medium text-sm px-5 py-2.5 focus:outline-none">
 									<span>Suprimer</span>
 								</button>
 							</form>
