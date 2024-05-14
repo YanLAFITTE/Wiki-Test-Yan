@@ -4,44 +4,52 @@ Welcome to Wiki-Test-Yan! This is a Symfony-based web application using MySQL an
 
 ## Overview
 
-This Symfony-based website allows users to manage vehicles and their availabilities, including creation, modification, and deletion of availability periods. Additionally, users can use a search form to input departure and return dates and receive a list of available vehicles for those dates, along with the rental price.
+This Symfony-based website allows users to manage vehicles and their availabilities, including creation, modification, and deletion of vehicles. Additionally, users can use a search form to input departure and return dates and receive a list of available vehicles for those dates, along with the rental price.
 
 ## Installation
 
 1. Clone the repository:
 
-    ```bash
-    git clone <repository-url>
-    ```
+   ```bash
+   git clone <repository-url>
+   ```
 
-2. Install dependencies:
+2. Create a [.env file](https://symfony.com/doc/current/configuration.html#env-file-syntax) to configure the database connection.
 
-    ```bash
-    composer install
-    ```
+3. Install dependencies:
 
-3. Configure the database connection in the `.env` file.
+   ```bash
+   composer install
+   composer require symfony/webpack-encore-bundle
+   ```
 
 4. Create the database schema:
 
-    ```bash
-    php bin/console doctrine:database:create
-    php bin/console doctrine:migrations:migrate
-    ```
+   ```bash
+   php bin/console doctrine:database:create
+   php bin/console doctrine:migrations:migrate
+   ```
 
 5. Load sample data (optional):
 
-    ```bash
-    php bin/console doctrine:fixtures:load
-    ```
+   ```bash
+   php bin/console doctrine:fixtures:load
+   ```
 
-6. Run the PHP development server:
+6. In a new terminal, install npm dependencies and start the watcher:
 
-    ```bash
-    php -S localhost:8000 -t public 
-    ```
+   ```bash
+   npm install
+   npm run watch
+   ```
 
-7. Visit `http://localhost:8000` in your web browser to access the application.
+7. In the first terminal, run the PHP development server:
+
+   ```bash
+   php -S localhost:8000 -t public
+   ```
+
+8. Visit `http://localhost:8000` in your web browser to access the application.
 
 ## Features
 
@@ -52,6 +60,5 @@ This Symfony-based website allows users to manage vehicles and their availabilit
 ## Usage
 
 1. **Create a Vehicle**: Navigate to the "Create Vehicle" page and fill in the details for the vehicle.
-2. **Manage Availabilities**: From the vehicle detail page, users can add, edit, or delete availability periods.
+2. **Manage Availabilities**: From the vehicle edit page, users can edit availability periods.
 3. **Search for Available Vehicles**: Use the search form to input departure and return dates. The system will display a list of available vehicles for those dates, along with rental prices.
-
