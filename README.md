@@ -20,6 +20,8 @@ This Symfony-based website allows users to manage vehicles and their availabilit
 
    ```bash
    composer install
+   ```
+   ```bash
    composer require symfony/webpack-encore-bundle
    ```
 
@@ -27,6 +29,8 @@ This Symfony-based website allows users to manage vehicles and their availabilit
 
    ```bash
    php bin/console doctrine:database:create
+   ```
+   ```bash
    php bin/console doctrine:migrations:migrate
    ```
 
@@ -40,6 +44,8 @@ This Symfony-based website allows users to manage vehicles and their availabilit
 
    ```bash
    npm install
+   ```
+   ```bash
    npm run watch
    ```
 
